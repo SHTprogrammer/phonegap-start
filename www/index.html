@@ -21,41 +21,47 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" id="alphaViewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=300, height=300, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         
-<!--        <script>
-        	window.onload = function () {
-    		var mvp = document.getElementById('alphaViewport');
-    		mvp.setAttribute('content','width=300');
-		}
-	</script>		
--->
-	<title>Hello World </title>
+    <title>Hello World </title>
+
+
+<!--			<script type="text/javascript" src="cordova.js"></script> -->
 
 <!--
-			<script type="text/javascript" src="phonegap.js"></script>
 			<script type="text/javascript" src="barcodescanner.js"></script>
 			<script type="text/javascript" src="js/index.js"></script>
+
 			<script type="text/javascript">
+
+ 			
 			var scanAndGo = function() {
 				try {
-					var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-					scanner.scan(function (result) {
-						var thisURL = result.text + '&__cordovaVersion=' + device.cordova + '&__cordovaPlatform=' + device.platform;
-						window.location.href = thisURL;
-					}, 
-						function (error) {
-							navigator.notification.alert("Scanning failed: " + error);
-					});
+					
+				var scanner = cordova.require("cordova/plugin/BarcodeScanner");	
+//				scanner = cordova.require("cordova/plugin/BarcodeScanner");	
+
+				
+				scanner.scan( function(result) {
+	      			alert("We got a barcode\n" +
+        			"Result: " + result.text + "\n" +
+                  	"Format: " + result.format + "\n" +
+                  	"Cancelled: " + result.cancelled);
+    				}, function(error) {
+        			alert("Scanning failed: " + error);
+                }
+    );
+				
+				
+				
+				
 				} catch(e) {
 					navigator.notification.alert('Scanner error: '+e);
 				}
 			};
 
 			app.initialize();
-
-	        </script>
 -->
 
 		<script type="text/javascript">
@@ -64,42 +70,25 @@
 			function onDeviceReady() {
 			    // Now safe to use the Codova API
  			//window.location="http://www.loyallee.com/business_Checkin.a5w?__cordovaVersion='+device.cordova+'&__cordovaPlatform='+device.platform"; }
- 			window.location="http://192.168.0.106:81/PGB_UX_BCScanner/ux_PGB_BCScanner.a5w?__cordovaVersion=2.9.0&__cordovaPlatform=iOS"; } 			
+ 			window.location="http://192.168.0.106:81/loyallee/business_Checkin.a5w?__cordovaVersion=2.9.0&__cordovaPlatform=iOS"; } 			
  		//	window.location="http://192.168.0.106:81/loyallee/business_Checkin.a5w?__cordovaVersion='+device.cordova+'&__cordovaPlatform='+device.platform"; } 			 			
 
 
 	        </script>
-
-</head>
+    </head>
     <body>
-<!--
-<button class="bluBtn" onclick = "navigator.notification.alert('Here we are');">Test Button</button></h1>
-<button class="bluBtn" onclick = "window.location.href = 'http://www.loyallee.com/business_Checkin.a5w?__cordovaVersion='+device.cordova+'&__cordovaPlatform='+device.platform">Load Remote Content</button></h1>
--->
-
-	<div class="app">
-            <h1>Alpha Anywhere PhoneGap Build Barcode Scanner from a UX Component<br />Scan and Load</h1>
+        <div class="app">
+            <h1>Alpha Anywhere/PhoneGap<br />Scan and Load</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
 			</div>
-			<br />
-		</div>
-<!--			
+			<br /><br /><br />
 			<div id="buttons">								
-					<button class="bluBtn" onclick = "window.location.href = 'http://192.168.10.5:81/test/a1.a5w?__cordovaVersion='+device.cordova+'&__cordovaPlatform='+device.platform">Load Remote Content</button></h1>
-
-<button class="bluBtn" onclick = "navigator.notification.alert('Here we are');">Test Button</button></h1>
-
-					<button class="bluBtn" onclick = "window.location.href = 'http://www.loyallee.com/business_Checkin.a5w?__cordovaVersion='+device.cordova+'&__cordovaPlatform='+device.platform">Load Remote Content</button></h1>
-					
-					
-				<button class="bluBtn" onclick = "scanAndGo()">Scan QR Code and Go</button>
+					<button class="bluBtn" style="height:50px" onclick = "scanAndGo()">Scan QR Code and Go</button>
             </div>
-			<p id="deviceProperties">
-				Loading device properties...
-			</p>
+
         </div>
--->      
+      
     </body>
 </html>
